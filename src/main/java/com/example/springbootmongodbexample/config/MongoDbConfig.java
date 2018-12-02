@@ -18,13 +18,13 @@ public class MongoDbConfig {
     @Bean
     CommandLineRunner commandLineRunner(UsersRepository usersRepository ) {
         return args -> {
-            if(usersRepository.findAll().size() < 2){
+            
                 usersRepository.deleteAll();
                 Users t1 = new Users("Peter123", "Development");
                 Users t2 = new Users("admin", "password");
                 usersRepository.save(t1);
                 usersRepository.save(t2);
-            }
+
         };
     }
 }
