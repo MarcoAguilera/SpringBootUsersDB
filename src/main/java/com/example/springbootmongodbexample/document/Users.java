@@ -1,5 +1,10 @@
 package com.example.springbootmongodbexample.document;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.springbootmongodbexample.cart.CartItem;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,10 +15,12 @@ public class Users{
 
     private String username;
     private String password;
+    private List<CartItem> cart;
 
     public Users(String username, String password) {
         this.username = username;
         this.password = password;
+        cart = new ArrayList<>();
     }
 
     public String getId() {
@@ -38,6 +45,14 @@ public class Users{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<CartItem> getCart(){
+        return cart;
+    }
+
+    public void addItem(CartItem item) {
+        this.cart.add(item);
     }
 
 }
